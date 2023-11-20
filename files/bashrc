@@ -129,11 +129,7 @@ if [ -f ~/.shell/bash_func.sh ]; then
 fi
 
 
-<<<<<<< HEAD
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-=======
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
->>>>>>> 0637a59b8903251429fa65cad1e1fe6e74eea602
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
 export PATH="$HOME/.neovim/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
