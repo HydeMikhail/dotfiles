@@ -28,22 +28,22 @@ alias podman_attach="podman exec -it 0b32b91071a8 bash"
 ##########################################################
 
 # Build Mordor Firmware
-alias build_mordor=$HOME/Documents/scripts/shell/firmware/build.sh
+alias build_mordor=$HOME/Documents/scripts/firmware/build.sh
 
 # Build Firmware x86
-alias build_local=$HOME/Documents/scripts/shell/firmware/build_local.sh
+alias build_local=$HOME/Documents/scripts/firmware/build_local.sh
 
 # Build Peripheral Firmware
-alias build_firmware=$HOME/Documents/scripts/shell/firmware/build_firmwares.sh
+alias build_firmware=$HOME/Documents/scripts/firmware/build_firmwares.sh
 
 # Build C++ Task Engine Cross Compile
-alias steve=$HOME/Documents/scripts/shell/firmware/steve_build.sh
+alias steve=$HOME/Documents/scripts/firmware/steve_build.sh
 
 # Build C++ Task Engine Locally
-alias steve_local=$HOME/Documents/scripts/shell/firmware/steve_local.sh
+alias steve_local=$HOME/Documents/scripts/firmware/steve_local.sh
 
 # Build PreForm
-alias build_preform=$HOME/Documents/scripts/shell/preform/build_preform.sh
+alias build_preform=$HOME/Documents/scripts/preform/build_preform.sh
 
 ##########################################################
 ###					   VIRTUALENV					   ###
