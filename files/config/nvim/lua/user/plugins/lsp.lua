@@ -30,7 +30,6 @@ return { -- LSP Configuration & Plugins
       nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
       nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
       nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-      nmap('<C-Space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
       vim.keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
     end
 
