@@ -15,10 +15,10 @@ alias vpnoff="openvpn3 session-manage --config profile.ovpn --disconnect"
 ##########################################################
 
 # Build Peripheral Firmware
-alias build_firmware=$HOME/Documents/scripts/shell/firmware/build_firmwares.sh
+alias build_firmware=$HOME/Documents/scripts/firmware/build_firmwares.sh
 
 # Build C++ Task Engine Cross Compile
-alias steve=$HOME/Documents/scripts/shell/firmware/steve_build.sh
+alias steve=$HOME/Documents/scripts/firmware/steve_build.sh
 
 ##########################################################
 ###					   VIRTUALENV					   ###
