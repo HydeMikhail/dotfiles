@@ -52,11 +52,8 @@ alias build_preform=$HOME/Documents/scripts/preform/build_preform.sh
 # Enable Data Python Virtualenv Python 3.11
 alias genpy="source $HOME/.venv/gen/bin/activate"
 
-# Enable Diesel Virtualenv Python 3.10
-alias diesel="source $HOME/.venv/diesel/bin/activate"
-
-# Enable TARS Emulation Python Virtualenv - Python 3.6
-alias tarspy="source $HOME/.venv/tars/bin/activate"
+# Enable Data Python Virtualenv Python 3.11
+alias testpy="source $HOME/.venv/testeng/bin/activate"
 
 ##########################################################
 ###					     HELPERS					   ###
