@@ -49,6 +49,9 @@ alias vim=nvim
 # Prepare ESP-IDF
 alias esp=". $HOME/Documents/sources/esp-idf/export.sh"
 
+# Show Picture in Kitty
+alias pic="kitty +kitten icat"
+
 ##########################################################
 ###					       SSH  					   ###
 ##########################################################
@@ -59,6 +62,12 @@ alias ssh='TERM=xterm ssh'
 ##########################################################
 ###					   NAVIGATION  					   ###
 ##########################################################
+
+# zoxide override
+alias cd=z
+
+# zoxide interactive override
+alias cdi=zi
 
 # cd Mordor
 alias mordor="cd $HOME/Documents/code/work/mordor"
