@@ -11,10 +11,10 @@ alias preform=$HOME/.preform/PreForm.sh
 alias preform_stable=$HOME/.preform_stable/PreForm.sh
 
 # Connect VPN
-alias vpnon="openvpn3 session-start --config profile.ovpn"
+alias vpnon="openvpn3 session-start --config profile"
 
 # Pause VPN
-alias vpnoff="openvpn3 session-manage --config profile.ovpn --disconnect"
+alias vpnoff="openvpn3 session-manage --config profile --disconnect"
 
 # CTL VPN
 alias ctlvpn="openvpn3 session-start --config ctl"
@@ -105,6 +105,12 @@ alias ssh='TERM=xterm ssh'
 ##########################################################
 ###					   NAVIGATION  					   ###
 ##########################################################
+
+# zoxide override
+alias cd=z
+
+# zoxide interactive override
+alias cdi=zi
 
 # cd Mordor
 alias mordor="cd $HOME/Documents/code/mordor"
