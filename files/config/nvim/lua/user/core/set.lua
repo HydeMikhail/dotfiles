@@ -54,4 +54,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.cmd[[ autocmd FileType lua set tabstop=2 shiftwidth=2 ]]
 -- Set Tab Spacing to 4 for YAML files
 vim.cmd[[ autocmd FileType yaml set tabstop=4 shiftwidth=4 ]]
-
+-- Enable Text Wrapping for Markdown files
+vim.cmd[[
+  augroup MarkdownWrap
+    autocmd!
+    autocmd FileType markdown setlocal wrap
+    autocmd FileType markdown setlocal textwidth=0
+  augroup END
+]]

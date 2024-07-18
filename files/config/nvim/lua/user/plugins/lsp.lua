@@ -41,6 +41,8 @@ return { -- LSP Configuration & Plugins
       'clangd',
       'pyright',
       'lua_ls',
+      'cmake',
+      'dockerls',
       -- Shell
       'bashls',
       -- Data Formats

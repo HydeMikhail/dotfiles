@@ -129,7 +129,11 @@ if [ -f ~/.shell/bash_func.sh ]; then
 fi
 
 
+<<<<<<< HEAD
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+=======
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
+>>>>>>> 0637a59b8903251429fa65cad1e1fe6e74eea602
 export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
 export PATH="$HOME/.neovim/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
@@ -139,6 +143,7 @@ set -o vi
 
 eval "$(zoxide init bash)"
 eval $(keychain --eval --agents ssh --quick --quiet)
+eval "$(zoxide init bash)"
 
 if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
     export $(gnome-keyring-daemon -s)
