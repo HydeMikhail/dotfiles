@@ -79,6 +79,7 @@ return { -- LSP Configuration & Plugins
     -- Additional LSP Setup
     -- Pyright (Python)
     require('lspconfig').pyright.setup {
+      on_attach=on_attach,
       settings = {
         pyright = {
           autoImportCompletion = true,
