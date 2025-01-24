@@ -5,7 +5,7 @@
 ##########################################################
 
 # Launch PreForm Release
-alias preform=$HOME/.preform/PreForm.sh
+alias preform="ulimit -n 2048; $HOME/.preform/PreForm.sh"
 
 # Launch PreForm Test
 alias preform_stable=$HOME/.preform_stable/PreForm.sh
@@ -22,9 +22,11 @@ alias ctlvpn="openvpn3 session-start --config ctl"
 # CTL VPN Off
 alias ctloff="openvpn3 session-manage --config ctl --disconnect"
 
-# Container
-alias podman_launch="podman run -it --rm localhost/vsc-task_apps-c850dfbea378909420d9533eeb7141236e85a4d7e9121e885d41cb884418ab31-uid /bin/bash"
-alias podman_attach="podman exec -it 0b32b91071a8 bash"
+# Launch Container
+alias container="bash $HOME/Documents/scripts/podman/launch.sh"
+
+# Container Sync
+alias container_sync="bash $HOME/Documents/scripts/podman/sync.sh"
 
 ##########################################################
 ###					    COMPILING					   ###
@@ -94,10 +96,10 @@ alias pic="kitty +kitten icat "
 ##########################################################
 
 # Connect to Lefou
-alias lefou="ssh lefou@10.35.0.45"
+alias lefou="ssh lefou@10.35.98.205"
 
 # Connect to Lefou-Account
-alias mack="ssh mikhail@10.35.0.45"
+alias mack="ssh mikhail@10.35.98.205"
 
 # XTERM SSH
 alias ssh='TERM=xterm ssh'
@@ -112,18 +114,4 @@ alias cd=z
 # zoxide interactive override
 alias cdi=zi
 
-# cd Mordor
-alias mordor="cd $HOME/Documents/code/mordor"
-
-# cd Engine
-alias engine="cd $HOME/Documents/code/mordor/task_apps"
-
-# cd PreForm
-alias preform_dev="cd $HOME/Documents/code/PreForm"
-
-# cd TestEngineering
-alias testeng="cd $HOME/Documents/code/TestEngineering"
-
-# cd Factory Software
-alias tars="cd $HOME/Documents/code/factory-software/components/tars"
-
+alias branches='(PIPENV_PIPFILE=$HOME/.shell/clean_branches/Pipfile pipenv run python $HOME/.shell/clean_branches/main.py)'

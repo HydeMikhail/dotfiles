@@ -8,6 +8,7 @@ return {
     open_mapping = "<C-\\>",
     hide_numbers = true,
     auto_chdir = true,
+    shell="bash",
   },
   vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-W>h]]),
   vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-W>j]]),

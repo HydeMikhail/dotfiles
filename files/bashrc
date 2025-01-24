@@ -137,6 +137,9 @@ export PATH=$PATH:/usr/local/go/bin
 export QT_PLUGIN_PATH=/usr/lib/x86_64-linux-gnu/qt5/plugins/
 . "$HOME/.cargo/env"
 
+export QT_QPA_PLATFORM_PLUGIN_PATH=$HOME/Documents/code/Qt/5.15.2/gcc_64/plugins/platforms
+export LANGUAGE=en_US:en
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/mikhail-hyde/.google/path.bash.inc' ]; then . '/home/mikhail-hyde/.google/path.bash.inc'; fi
 # The next line enables shell command completion for gcloud.

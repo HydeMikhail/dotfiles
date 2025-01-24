@@ -12,25 +12,25 @@ return { -- LSP Configuration & Plugins
 	},
 	config = function()
     --  This function gets run when an LSP connects to a particular buffer.
-    local on_attach = function(_, bufnr)
-      -- In this case, we create a function that lets us more easily define mappings specific
-      -- for LSP related items. It sets the mode, buffer and description for us each time.
-      local nmap = function(keys, func, desc)
-        if desc then
-          desc = 'LSP: ' .. desc
-        end
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-      end
+    local on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+      local opts = { noremap=true, silent=true }
 
-      nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-      nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-      nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-      nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-      nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-      nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-      nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-      nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-      vim.keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+      buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+      buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+      buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+      buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+      buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+      buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+      buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+      buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+      buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+      buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+      buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+      buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     end
 
 		-- Setup mason so it can manage external tooling
@@ -79,6 +79,7 @@ return { -- LSP Configuration & Plugins
     -- Additional LSP Setup
     -- Pyright (Python)
     require('lspconfig').pyright.setup {
+      on_attach = on_attach,
       settings = {
         pyright = {
           autoImportCompletion = true,
@@ -96,6 +97,7 @@ return { -- LSP Configuration & Plugins
         },
       },
     }
+
     -- Lua
 		require('lspconfig').lua_ls.setup {
       settings = {
@@ -117,6 +119,28 @@ return { -- LSP Configuration & Plugins
         },
       },
 		}
+
+    -- Clangd
+    local function find_build_dir()
+      local cwd = vim.fn.getcwd()
+      local build_dirs = { "build", "build/debug", "build/release" }
+      for _, dir in ipairs(build_dirs) do
+        local build_dir = cwd .. "/" .. dir
+        if vim.fn.isdirectory(build_dir) == 1 then
+          return build_dir
+        end
+      end
+      return cwd
+    end
+
+
+    require('lspconfig').clangd.setup {
+      cmd = { "clangd", "--compile-commands-dir=" .. find_build_dir(), "--log=verbose" },
+      on_attach = on_attach,
+      flags = {
+        debounce_text_changes = 150,
+      }
+    }
 
     vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
     vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
