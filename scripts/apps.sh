@@ -24,6 +24,7 @@ sudo apt install                \
     git                         \
     vim                         \
     ripgrep                     \
+    fzf                         \
     gettext -y
 
 # Normal Person Applications

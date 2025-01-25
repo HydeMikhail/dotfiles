@@ -15,6 +15,9 @@ alias vim=nvim
 # Show Img in Kitty
 alias pic="kitty +kitten icat "
 
+# XTERM SSH
+alias ssh='TERM=xterm ssh'
+
 # zoxide override
 alias cd=z
 

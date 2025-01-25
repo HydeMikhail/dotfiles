@@ -135,7 +135,6 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/Documents/sources/bluebubbles
 
 . "$HOME/.cargo/env"
-
 set -o vi
 
 eval $(keychain --eval --agents ssh --quick --quiet)
