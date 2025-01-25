@@ -1,72 +1,5 @@
 # /bin/bash
 
-##########################################################
-###						LAUNCHERS					   ###
-##########################################################
-
-# Launch PreForm Release
-alias preform="ulimit -n 2048; $HOME/.preform/PreForm.sh"
-
-# Launch PreForm Test
-alias preform_stable=$HOME/.preform_stable/PreForm.sh
-
-# Connect VPN
-alias vpnon="openvpn3 session-start --config profile"
-
-# Pause VPN
-alias vpnoff="openvpn3 session-manage --config profile --disconnect"
-
-# CTL VPN
-alias ctlvpn="openvpn3 session-start --config ctl"
-
-# CTL VPN Off
-alias ctloff="openvpn3 session-manage --config ctl --disconnect"
-
-# Launch Container
-alias container="bash $HOME/Documents/scripts/podman/launch.sh"
-
-# Container Sync
-alias container_sync="bash $HOME/Documents/scripts/podman/sync.sh"
-
-##########################################################
-###					    COMPILING					   ###
-##########################################################
-
-# Build Mordor Firmware
-alias build_mordor=$HOME/Documents/scripts/firmware/build.sh
-
-# Build Firmware x86
-alias build_local=$HOME/Documents/scripts/firmware/build_local.sh
-
-# Build Peripheral Firmware
-alias build_firmware=$HOME/Documents/scripts/firmware/build_firmwares.sh
-
-# Build C++ Task Engine Cross Compile
-alias steve=$HOME/Documents/scripts/firmware/steve_build.sh
-
-# Build C++ Task Engine Locally
-alias steve_local=$HOME/Documents/scripts/firmware/steve_local.sh
-
-# Build PreForm
-alias build_preform=$HOME/Documents/scripts/preform/build_preform.sh
-
-##########################################################
-###					   VIRTUALENV					   ###
-##########################################################
-
-# Enable Data Python Virtualenv Python 3.11
-alias genpy="source $HOME/.venv/gen/bin/activate"
-
-# Enable Data Python Virtualenv Python 3.11
-alias testpy="source $HOME/.venv/testeng/bin/activate"
-
-##########################################################
-###					     HELPERS					   ###
-##########################################################
-
-# Refresh AWS Credentials
-alias refresh="python $HOME/Documents/code/factory-software/working-scripts/refresh_aws_creds.py"
-
 # Runs a sequence of cleaning commands to refresh OS
 alias clean_sys=$HOME/.shell/clean_sys.sh
 
@@ -79,34 +12,8 @@ alias c=clear
 # Neovim
 alias vim=nvim
 
-# Proto2 Plot Logs
-alias plotlogs="python ~/Documents/code/mordor/python/scripts/diesel/science/plots/plotLogs.py"
-
-# Show GDB Server Command
-alias gdbserver="echo gdbserver 0.0.0.0:2345 ./task_engine"
-
-# Prepare ESP-IDF
-alias esp=". $HOME/Documents/sources/esp-idf/export.sh"
-
 # Show Img in Kitty
 alias pic="kitty +kitten icat "
-
-##########################################################
-###					       SSH  					   ###
-##########################################################
-
-# Connect to Lefou
-alias lefou="ssh lefou@10.35.98.205"
-
-# Connect to Lefou-Account
-alias mack="ssh mikhail@10.35.98.205"
-
-# XTERM SSH
-alias ssh='TERM=xterm ssh'
-
-##########################################################
-###					   NAVIGATION  					   ###
-##########################################################
 
 # zoxide override
 alias cd=z

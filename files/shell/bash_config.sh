@@ -2,7 +2,7 @@ PROMPT_COMMAND=__prompt_command
 
 __prompt_command() {
 
-    local EXIT="$?"              This needs to be first
+    local EXIT="$?"              #This needs to be first
     local NoCol='\[\e[0m\]'
     local BoldOff='\[$(tput sgr0)\]'
     

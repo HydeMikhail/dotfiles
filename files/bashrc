@@ -91,6 +91,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Bash Functions
+if [ -f ~/.shell/bash_func.sh ]; then
+    . ~/.shell/bash_func.sh
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -118,38 +123,20 @@ parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 export PS1="${BLUE}mhyde ${GREEN}\W${YELLOW}\$(parse_git_branch)${WHITE} 󰑄  "
-# 
-# ➜
 
-#export TERM=xterm-256color
-
-# Bash Functions
-if [ -f ~/.shell/bash_func.sh ]; then
-    . ~/.shell/bash_func.sh
-fi
-
-
-export AWS_DEFAULT_REGION=us-east-1
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
-export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
-export PATH="$HOME/.neovim/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
-export QT_PLUGIN_PATH=/usr/lib/x86_64-linux-gnu/qt5/plugins/
-. "$HOME/.cargo/env"
-
-export QT_QPA_PLATFORM_PLUGIN_PATH=$HOME/Documents/code/Qt/5.15.2/gcc_64/plugins/platforms
 export LANGUAGE=en_US:en
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/mikhail-hyde/.google/path.bash.inc' ]; then . '/home/mikhail-hyde/.google/path.bash.inc'; fi
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/mikhail-hyde/.google/completion.bash.inc' ]; then . '/home/mikhail-hyde/.google/completion.bash.inc'; fi
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib"
+export PYTHONPATH="${PYTHONPATH}:$HOME/.local/bin"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.neovim/bin
+export PATH=$PATH:$HOME/Documents/sources/flutter/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/Documents/sources/bluebubbles
+
+. "$HOME/.cargo/env"
 
 set -o vi
 
 eval $(keychain --eval --agents ssh --quick --quiet)
 eval "$(zoxide init bash)"
-
-if [ "$0" = "/usr/sbin/lightdm-session" -a "$DESKTOP_SESSION" = "i3" ]; then
-    export $(gnome-keyring-daemon -s)
-fi
